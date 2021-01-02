@@ -1,0 +1,12 @@
+.step-page {
+  position: relative;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.page-detail{
+  font-size: 32px;
+}
