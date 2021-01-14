@@ -1,12 +1,15 @@
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
+import 'antd/lib/modal/style/css'
+import 'antd/lib/button/style/css'
 import { useEffect } from 'react';
 import { Prompt } from 'react-router-dom';
 import NaviButton from '../components/NaviButton';
 import './StepPage.css';
 
 const StepPage = (props) => {
+  console.log(props);
   const { history } = props;
 
   const [modal, contextHolder] = Modal.useModal();
@@ -25,7 +28,7 @@ const StepPage = (props) => {
           new Promise((resolve, reject) => {
             modal.confirm({
               icon: <ExclamationCircleOutlined />,
-              content: <Button>Do you want to leave?(async blocker)</Button>,
+              content:'Do you want to leave?(async blocker)',
               onOk() {
                 resolve();
               },
@@ -46,7 +49,7 @@ const StepPage = (props) => {
             new Promise((resolve, reject) => {
               modal.confirm({
                 icon: <ExclamationCircleOutlined />,
-                content: <Button>Do you want to leave?(async blocker by prompt)</Button>,
+                content: 'Do you want to leave?(async blocker by prompt)',
                 onOk() {
                   resolve();
                 },
@@ -79,14 +82,14 @@ const StepPage = (props) => {
         <li>step6, step8使用了异步拦截，history不支持</li>
         <li>在前进/后退时，history.action显示有误</li>
         <li>history在刷新页面后，使用前进、后退时，如果页面存在block，取消跳转时，地址栏没有被取消。操作方式：</li>
-        <ul>
+        <ol>
           <li>进入到/step3</li>
           <li>push到/step4</li>
           <li>后退到/step3</li>
           <li>刷新页面</li>
           <li>点击前进按钮，触发block，弹出prompt</li>
           <li>点击取消按钮，终止跳转，观察地址栏，仍然是/step4</li>
-        </ul>
+        </ol>
       </ul>
       {contextHolder}
     </div>
